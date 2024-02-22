@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #0b1147;
+    font-family: "Anta", sans-serif;
+    color: white;
+}
+
+canvas {
+    position: absolute;
+    bottom: 0;
+}
+
+.gate21 {
+    height: 50px;
+    width:  80px;
+    text-align: center;
+    line-height: 50px;
+    font-family: "Anta", sans-serif;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: grey;
+    position: absolute;
+}
+
+.inputOutput:hover {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+#input1 {
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    background-color: #ccc;
+    position: absolute;
+    left: -7px;
+    top: 7px;
+}
+
+#input2 {
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    background-color: #ccc;
+    position: absolute;
+    left: -7px;
+    top: 28px;
+}
+
+#output1 {
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    background-color: #ccc;
+    position: absolute;
+    left: 73px;
+    top: 18px;
+}
+
+#stage {
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    bottom: 0;
+    background-color: #070b30;
+}

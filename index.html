@@ -4,23 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="stylesheet" href="style.css">
-        <title>Cricut Board Simulator</title>
+        <title>Circuit Board Simulator</title>
     </head>
     <body>
-        <h1 id="cricutName">Unnamed Cricut</h1>
+        <h1 id="circuitName" style="user-select: none;">Unnamed Circuit</h1>
         <div id="stage">
             <canvas id="canvas" width="100" height="90"></canvas>
-            <div class="gate21" style="left: 50px; top: 100px;" id="test1">
-                <div id="input1" class="inputOutput"></div>
-                <div id="input2" class="inputOutput"></div>
-                AND
-                <div id="output1" class="inputOutput"></div>
+            <div onmousedown="checkDragDown(event)" onmouseup="checkDragUp(event)" class="switch gate" id="2" style="left: 50px; top: 250px;">
+                OFF
+                <div class="gateInputOutput switchOutput output1 gateOutput"></div>
             </div>
-            <div class="gate21" style="left: 400px; top: 400px;" id="test2">
-                <div id="input1" class="inputOutput"></div>
-                <div id="input2" class="inputOutput"></div>
+            <div onmousedown="checkDragDown(event)" onmouseup="checkDragUp(event)" class="switch gate" id="3" style="left: 50px; top: 350px">
+                OFF
+                <div class="gateInputOutput switchOutput output1 gateOutput"></div>
+            </div>
+            <div id="1" class="and gate" style="left: 700px; top: 300px;" draggable="false">
+                <div class="gateInputOutput andInput1 input1 gateInput" onmouseover=""></div>
+                <div class="gateInputOutput andInput2 input2 gateInput"></div>
                 AND
-                <div id="output1" class="inputOutput"></div>
+                <div class="gateInputOutput andOutput1 output1 gateOutput"></div>
             </div>
         </div>
         <script src="script.js"></script>

@@ -292,37 +292,37 @@ function previewDrag(e) {
       };
       gateObject[nextId.toString()] = gate;
       break;
-    case classList.contains("pXnor"):
+    case classList.contains("pNor"):
       gateContainer.innerHTML += `
-        <div class="xnor gate" id="${nextId}" style="left:${e.clientX - relX}px; top: ${e.clientY - relY - window.innerHeight * 0.2}px;">
-          <div class="gateInputOutput xnorInput1 input1 gateInput"></div>
-          <div class="gateInputOutput xnorInput2 input2 gateInput"></div>
-          XNOR
-          <div class="gateInputOutput xnorOutput1 output1 gateOutput"></div>
+        <div class="nor gate" id="${nextId}" style="left:${e.clientX - relX}px; top: ${e.clientY - relY - window.innerHeight * 0.2}px;">
+          <div class="gateInputOutput norInput1 input1 gateInput"></div>
+          <div class="gateInputOutput norInput2 input2 gateInput"></div>
+          NOR
+          <div class="gateInputOutput norOutput1 output1 gateOutput"></div>
         </div>
       `;
       gate = {
         element: document.getElementById(nextId),
-        type: "xnor",
+        type: "nor",
         inputs: [
           {
-            element: document.getElementById(nextId).getElementsByClassName("xnorInput1")[0],
-            x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("xnorInput1")[0].offsetLeft,
-            y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("xnorInput1")[0].offsetTop,
+            element: document.getElementById(nextId).getElementsByClassName("norInput1")[0],
+            x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("norInput1")[0].offsetLeft,
+            y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("norInput1")[0].offsetTop,
             value: 0
           },
           {
-            element: document.getElementById(nextId).getElementsByClassName("xnorInput2")[0],
-            x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("xnorInput2")[0].offsetLeft,
-            y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("xnorInput2")[0].offsetTop,
+            element: document.getElementById(nextId).getElementsByClassName("norInput2")[0],
+            x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("norInput2")[0].offsetLeft,
+            y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("norInput2")[0].offsetTop,
             value: 0
           }
         ],
         outputs: [
           {
-            element: document.getElementById(nextId).getElementsByClassName("xnorOutput1")[0],
-            x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("xnorOutput1")[0].offsetLeft,
-            y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("xnorOutput1")[0].offsetTop,
+            element: document.getElementById(nextId).getElementsByClassName("norOutput1")[0],
+            x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("norOutput1")[0].offsetLeft,
+            y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("norOutput1")[0].offsetTop,
             value: 0,
             connections: [],
           },
@@ -330,6 +330,44 @@ function previewDrag(e) {
       };
       gateObject[nextId.toString()] = gate;
       break;
+      case classList.contains("pXnor"):
+        gateContainer.innerHTML += `
+          <div class="xnor gate" id="${nextId}" style="left:${e.clientX - relX}px; top: ${e.clientY - relY - window.innerHeight * 0.2}px;">
+            <div class="gateInputOutput xnorInput1 input1 gateInput"></div>
+            <div class="gateInputOutput xnorInput2 input2 gateInput"></div>
+            XNOR
+            <div class="gateInputOutput xnorOutput1 output1 gateOutput"></div>
+          </div>
+        `;
+        gate = {
+          element: document.getElementById(nextId),
+          type: "xnor",
+          inputs: [
+            {
+              element: document.getElementById(nextId).getElementsByClassName("xnorInput1")[0],
+              x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("xnorInput1")[0].offsetLeft,
+              y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("xnorInput1")[0].offsetTop,
+              value: 0
+            },
+            {
+              element: document.getElementById(nextId).getElementsByClassName("xnorInput2")[0],
+              x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("xnorInput2")[0].offsetLeft,
+              y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("xnorInput2")[0].offsetTop,
+              value: 0
+            }
+          ],
+          outputs: [
+            {
+              element: document.getElementById(nextId).getElementsByClassName("xnorOutput1")[0],
+              x: document.getElementById(nextId).offsetLeft + document.getElementById(nextId).getElementsByClassName("xnorOutput1")[0].offsetLeft,
+              y: document.getElementById(nextId).offsetTop + document.getElementById(nextId).getElementsByClassName("xnorOutput1")[0].offsetTop,
+              value: 0,
+              connections: [],
+            },
+          ]
+        };
+        gateObject[nextId.toString()] = gate;
+        break;
     default:
       break;
   }

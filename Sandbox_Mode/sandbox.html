@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="style.css">
+        <title>Circuit Board Simulator</title>
+    </head>
+    <body>
+        <div style="margin: 0 0; height: 10vh; line-height: 10vh;">
+            <h1 id="circuitName" style="user-select: none; margin: 0;">Unnamed Circuit</h1>
+        </div>
+        <div id="toolbar">
+            <div id="previewContainer">
+                <div class="pSwitch" onmousedown="previewDrag(event)">
+                    OFF
+                    <div class="pInputOutput pSwitchOutput pOutput"></div>
+                </div>
+                <div class="pLight" onmousedown="previewDrag(event)">
+                    OFF
+                    <div class="pInputOutput pLightInput pInput"></div>
+                </div>
+                <div class="pAnd" onmousedown="previewDrag(event)">
+                    <div class="pInputOutput pAndInput1 pInput"></div>
+                    <div class="pInputOutput pAndInput2 pInput"></div>
+                    AND
+                    <div class="pInputOutput pAndOutput1 pOutput"></div>
+                </div>
+                <div class="pOr" onmousedown="previewDrag(event)">
+                    <div class="pInputOutput pOrInput1 pInput"></div>
+                    <div class="pInputOutput pOrInput2 pInput"></div>
+                    OR
+                    <div class="pInputOutput pOrOutput1 pOutput"></div>
+                </div>
+                <div class="pNot" onmousedown="previewDrag(event)">
+                    <div class="pInputOutput pNotInput pInput"></div>
+                    NOT
+                    <div class="pInputOutput pNotOutput pOutput"></div>
+                </div>
+                <div class="pXor" onmousedown="previewDrag(event)">
+                    <div class="pInputOutput pXorInput1 pInput"></div>
+                    <div class="pInputOutput pXorInput2 pInput"></div>
+                    XOR
+                    <div class="pInputOutput pXorOutput1 pOutput"></div>
+                </div>
+                <div class="pNand" onmousedown="previewDrag(event)">
+                    <div class="pInputOutput pNandInput1 pInput"></div>
+                    <div class="pInputOutput pNandInput2 pInput"></div>
+                    NAND
+                    <div class="pInputOutput pNandOutput1 pOutput"></div>
+                </div>
+                <div class="pNor" onmousedown="previewDrag(event)">
+                    <div class="pInputOutput pNorInput1 pInput"></div>
+                    <div class="pInputOutput pNorInput2 pInput"></div>
+                    NOR
+                    <div class="pInputOutput pNorOutput1 pOutput"></div>
+                </div>
+                <div class="pXnor" onmousedown="previewDrag(event)">
+                    <div class="pInputOutput pXnorInput1 pInput"></div>
+                    <div class="pInputOutput pXnorInput2 pInput"></div>
+                    XNOR
+                    <div class="pInputOutput pXnorOutput1 pOutput"></div>
+                </div>
+            </div>
+        </div>
+        <div id="stage">
+            <canvas id="canvas" width="100vw" height="80vh"></canvas>
+            <div id="gateContainer"></div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

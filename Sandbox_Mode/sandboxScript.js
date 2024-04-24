@@ -114,62 +114,64 @@ if (localStorage.selectedCircuit) {
 }
 
 function saveCircuit() {
-    var newName = prompt("Enter a new name for the circuit: ");
     if (localStorage.selectedCircuit == "") {
-        document.title = "working 1";
-        saveFile.circuits[newName] = gateObject;
-        localStorage.saveFile = JSON.stringify(saveFile);
-        localStorage.selectedCircuit = newName;
-        circuitName.innerText = newName;
-    } else if (newName !== localStorage.selectedCircuit) {
-        document.title = "working 2"
-        Object.defineProperty(saveFile.circuits, newName,
-            Object.getOwnPropertyDescriptor(saveFile.circuits, localStorage.selectedCircuit));
-        delete saveFile.circuits[localStorage.selectedCircuit];
-        saveFile.circuits[newName] = gateObject;
-        localStorage.saveFile = JSON.stringify(saveFile);
-        localStorage.selectedCircuit = newName;
-        circuitName.innerText = newName;
-    } else {
-        alert(`New name can not currently be original name.
-        Note: I will fix this in future updates.`)
+        rename();
     }
+    saveFile.circuits[localStorage.selectedCircuit] = gateObject;
+    localStorage.saveFile = JSON.stringify(saveFile);
 }
 
 function saveToFile() {
-    const blob = new Blob([ JSON.stringify(saveFile) ], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(saveFile)], { type: 'application/json' });
     downloadBlob(blob, "SaveFile")
+}
+
+function rename() {
+    var name = prompt("Enter the new name: ");
+    if (name == "") {
+        alert("Please enter a valid name with at least one character");
+        rename();
+    } else if (localStorage.selectedCircuit == "") {
+        localStorage.selectedCircuit = name;
+        circuitName.innerText = name;
+    } else if (name !== localStorage.selectedCircuit) {
+        Object.defineProperty(saveFile.circuits, name,
+            Object.getOwnPropertyDescriptor(saveFile.circuits, localStorage.selectedCircuit));
+        delete saveFile.circuits[localStorage.selectedCircuit];
+        localStorage.selectedCircuit = name;
+        circuitName.innerText = name;
+    }
 }
 
 function downloadBlob(blob, filename) {
     // Create an object URL for the blob object
     const url = URL.createObjectURL(blob);
-  
+
     // Create a new anchor element
     const a = document.createElement('a');
-  
+
     // Set the href and download attributes for the anchor element
     // You can optionally set other attributes like `title`, etc
     // Especially, if the anchor element will be attached to the DOM
     a.href = url;
 
     a.download = filename || 'SaveFile';
-  
+
     // Click handler that releases the object URL after the element has been clicked
     // This is required for one-off downloads of the blob content
     const clickHandler = () => {
-      setTimeout(() => {
-        URL.revokeObjectURL(url);
-        removeEventListener('click', clickHandler);
-      }, 150);
+        setTimeout(() => {
+            URL.revokeObjectURL(url);
+            removeEventListener('click', clickHandler);
+        }, 150);
     };
-  
+
     // Add the click event listener on the anchor element
     // Comment out this line if you don't want a one-off download of the blob content
     a.addEventListener('click', clickHandler, false);
-    
+
     a.click();
-  }
+}
 
 //Arrays of the logic gates and their nodes
 var gateElements = document.getElementsByClassName("gate");
@@ -751,6 +753,8 @@ function dragElement(elmnt) {
             node.x = document.getElementById(elmnt.id).offsetLeft + document.getElementById(elmnt.id).getElementsByClassName(`output${index + 1}`)[0].offsetLeft;
             node.y = document.getElementById(elmnt.id).offsetTop + document.getElementById(elmnt.id).getElementsByClassName(`output${index + 1}`)[0].offsetTop;
         });
+        gateObject[elmnt.id].x = elmnt.offsetLeft;
+        gateObject[elmnt.id].y = elmnt.offsetTop;
     }
 
     function closeDragElement() {

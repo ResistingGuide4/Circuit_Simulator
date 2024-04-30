@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="campaignStyle.css">
+    <title>Complicated Gates</title>
+  </head>
+
+  <body>
+    <div id="toolbar">
+      <img src="../Images/Circuit Simulator Title.png" alt="Circuit Simulator Title Image" onclick="window.location.href = '../index.html';" />
+      <button onclick="window.location.replace('../Sandbox_Mode/setup.html')" style="height: 30px; margin: auto 0;">
+        Sandbox Mode
+      </button>
+    </div>
+    <h2>Complicated Gates</h2>
+    <p>These gates are a little harder to understand, but I will do my best trying to explain</p>
+    <h3>XOR Gate</h3>
+    <div style="display: flex; align-items: center;">
+      <p>
+        The <b>XOR</b> (Pronounced: EX-OR) gate, also known as the Exlusive Or Gate, acts sort of like the <b>OR</b> gate, except it will output OFF if both inputs are on. Basically, it will output ON if the inputs are different. Here is the truth table: 
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/XorGateTruthTable.png" alt="Image of gate" height="100px" style="display: inline-block;">
+      </div>
+    </div>
+    <h3>NAND Gate</h3>
+    <div style="display: flex; align-items: center;">
+      <p>
+        The <b>NAND</b> gate, also known as the Negated And Gate, is kind of like the <b>AND</b> gate, but it is negated. That means that it will output ON if either one of the inputs is off or not both are on. Here is the truth table: 
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/NandGateTruthTable.png" alt="Image of gate" height="100px" style="display: inline-block;">
+      </div>
+    </div>
+    <h3>NOR Gate</h3>
+    <div style="display: flex; align-items: center;">
+      <p>
+        The <b>NOR</b> gate, also known as the Negated Or Gate, is kind of like the <b>Or</b> gate, but again, it is negated. That means that it will output ON if both of the inputs are off. Here is the truth table: 
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/NorGateTruthTable.png" alt="Image of gate" height="100px" style="display: inline-block;">
+      </div>
+    </div>
+    <h3>XNOR Gate</h3>
+    <div style="display: flex; align-items: center;">
+      <p>
+        The <b>XNOR</b> gate, also known as the Negated Exlusive Or Gate, just like the last to, is the negated version of another gate, in this case, the XOR gate. That means that it will output ON if the inputs are the same, whether they are both OFF or ON. Here is the truth table: 
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/XnorGateTruthTable.png" alt="Image of gate" height="100px" style="display: inline-block;">
+      </div>
+    </div> 
+    <h3>What gate outputs ON if either one of the inputs is OFF?</h3>
+    <br>
+    <input type="radio" name="question3" id="xorGate" value="XorGate">
+    <label for="xorGate">Xor Gate</label>
+    <br><br>
+    <input type="radio" name="question3" id="nandGate" value="NandGate">
+    <label for="nandGate">Nand Gate</label>
+    <br><br>
+    <input type="radio" name="question3" id="xnorGate" value="XnorGate">
+    <label for="xnorGate">Xnor Gate</label>
+    <br><br>
+    <button onclick="checkIfCorrect()">Submit</button>
+    <div id="solution"></div>
+    <script src="ComplicatedGatesScript.js"></script>
+    <button onclick="window.location.href = 'introToTruthTable.html';">Back</button>
+  </body>
+</html>

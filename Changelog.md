@@ -11,3 +11,7 @@
 - Can save data to a file
 - Added setup page
 - Styled setup page and home page
+
+## Circuit Simulator Beta 1.0
+- Added Tutorial
+- Fixed bug when loading circuit

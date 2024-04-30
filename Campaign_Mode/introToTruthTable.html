@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="campaignStyle.css">
+    <title>Intro to Truth Tables</title>
+  </head>
+  <body>
+    <div id="toolbar">
+      <img src="../Images/Circuit Simulator Title.png" alt="Circuit Simulator Title Image" onclick="window.location.href = '../index.html';">
+      <button onclick="window.location.replace('../Sandbox_Mode/setup.html')" style="height: 30px; margin: auto 0;">Sandbox Mode</button>
+    </div>
+    <h2>Intro to Truth Tables</h2>
+    <div style="display: flex; align-items: center;">
+      <p style="display: inline-block">
+        Before we get started talking about the logic of the gates, I have to introduce you to something. This is a <b>truth table</b>. It shows you the output of a circuit depending on the inputs. This can be used for logic gates as well as full circuits.
+        In this program, I will be using abbreviations like I1, I2, and O1 to indicate the inputs and outputs. I also added colors to make them easier to see. This truth table explains the logic of the <b>AND</b> gate. As you can see, It only outputs ON if both inputs are ON.
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/Truth Table.png" alt="Image of gate" height="100px" style="display: inline-block;">
+        <img src="../Images/AndGate.png" alt="And Gate" height="50px" style="display: inline-block">
+      </div>
+    </div>
+    <h2>Functionality of Gates</h2>
+    <h3>OR Gate</h3>
+    <div style="display: flex; align-items: center;">
+      <p>
+        The <b>OR</b> gate, looking very similar to the <b>AND</b> gate, only outputs an ON if either one of the inputs is ON. It only outputs OFF if both of the inputs are off. Here is the truth table: 
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/OrGateTruthTable.png" alt="Image of gate" height="100px" style="display: inline-block;">
+      </div>
+    </div>
+    <h3>NOT Gate</h3>
+    <div style="display: flex; align-items: center;">
+      <p>
+        The <b>NOT</b> gate has only one input and one output and outputs the opposite of the input. That means if you input ON, you get OFF, and if you input OFF, you get ON. Here is the truth table: 
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/NotGateTruthTable.png" alt="Image of gate" height="75px" style="display: inline-block;">
+      </div>
+    </div>
+    <h3>What gate belongs to this truth table?</h3>
+    <img src="../Images/Truth Table.png" alt="And Truth Table" height="100px;">
+    <br>
+    <input type="radio" name="question2" id="orGate" value="OrGate">
+    <label for="orGate">Or Gate</label>
+    <br><br>
+    <input type="radio" name="question2" id="notGate" value="NotGate">
+    <label for="notGate">Not Gate</label>
+    <br><br>
+    <input type="radio" name="question2" id="andGate" value="AndGate">
+    <label for="andGate">And Gate</label>
+    <br><br>
+    <button onclick="checkIfCorrect()">Submit</button>
+    <div id="solution"></div>
+    <button onclick="window.location.href = 'campaign.html';">Back</button>
+    <script src="IntroToTruthTableScript.js"></script>
+  </body>
+</html>

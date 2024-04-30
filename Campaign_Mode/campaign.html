@@ -3,9 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Campaign</title>
+    <link rel="stylesheet" href="campaignStyle.css">
+    <title>Campaign Mode</title>
   </head>
   <body>
-    <h1>Campaign</h1>
+    <div id="toolbar" style="display: flex; background-color: grey; height: 10vh;">
+      <img src="../Images/Circuit Simulator Title.png" alt="Circuit Simulator Title Image" onclick="window.location.href = '../index.html';">
+      <button onclick="window.location.replace('../Sandbox_Mode/setup.html')" style="height: 30px; margin: auto 0;">Sandbox Mode</button>
+    </div>
+    <h1>Welcome to the Tutorial</h1>
+    <p>Here you will learn how to play the game and unlock certain logic gates.</p>
+    <h2>Controls and Intro to Logic Gates</h2>
+    <div style="display: flex">
+      <p style="display: inline-block">
+        First of all, these are <b>logic gates.</b> You can click and drag them around. They will produce an output of on or off. The thing at the top of the screen is called the <b>Toolbar</b>. You can drag gates down from it or you can drag gates back up to delete them.
+        The grey circles on their edges are called nodes. They act as connection points between the other nodes. If it is on the left, it is an <b>input node.</b> If it is on the right, it is an <b>output node.</b>
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/Gate Image.png" alt="Image of gate" height="50px" style="display: inline-block;">
+      </div>
+    </div>
+    <div style="display: flex">
+      <p style="display: inline-block;">
+        You can connect <b>wires</b> between them by clicking and dragging like this. Values can be passed along wires to different nodes. <b>Note: You can only connect input nodes to output nodes</b>, and not input node to input node or output node to output node.
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/drag.png" alt="Image of gate" height="50px" style="display: inline-block;">
+      </div>
+    </div>
+    <div style="display: flex">
+      <p style="display: inline-block;">
+        These are a special type of gate called the <b>Switch</b> (Left and Middle) and the <b>Light</b> (Right). Notice that the switch's node is on the right and the light's node is on the left. You can click on the switch to turn it from on to off and vice versa. The light will turn on or off depending on what is inputted into it.
+      </p>
+      <div style="margin-left: auto;">
+        <img src="../Images/Switch & Light.png" alt="Image of gate" height="50px" style="display: inline-block;">
+      </div>
+    </div>
+    <h3>What is this called?</h3>
+    <img src="../Images/Question 1.png" alt="Picture Of Switch" height="100px;">
+    <br>
+    <input type="radio" name="question1" id="light" value="Light">
+    <label for="light">Light</label>
+    <br><br>
+    <input type="radio" name="question1" id="switch" value="Switch">
+    <label for="switch">Switch</label>
+    <br><br>
+    <input type="radio" name="question1" id="andGate" value="AndGate">
+    <label for="andGate">And Gate</label>
+    <br><br>
+    <button onclick="checkIfCorrect()">Submit</button>
+    <div id="solution"></div>
+    <script src="campaignScript.js"></script>
   </body>
 </html>

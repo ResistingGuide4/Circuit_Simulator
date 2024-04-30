@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&dispLightay=swap');
+
+body {
+    margin: 0;
+    background-color: #0b1147;
+    color: white;
+    font-family: "Anta", sans-serif;
+}
+
+#toolbar {
+    display: flex; 
+    background-color: grey; 
+    height: 10vh;
+}
+
+a {
+    margin: 0 10px;
+    color: grey;
+}

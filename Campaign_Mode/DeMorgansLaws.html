@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="campaignStyle.css">
+    <title>De Morgan's Laws</title>
+  </head>
+
+  <body>
+    <div id="toolbar">
+      <img src="../Images/Circuit Simulator Title.png" alt="Circuit Simulator Title Image" onclick="window.location.href = '../index.html';">
+      <button onclick="window.location.replace('../Sandbox_Mode/setup.html')" style="height: 30px; margin: auto 0;">Sandbox Mode</button>
+    </div>
+    <h2>De Morgan's Laws</h2>
+    <p>
+      De Morgan's Laws, named after Augustus are some rules that state that a NOR gate is the same as negating the inputs of an AND gate, 
+      and a NAND gate is the same as negating the inputs of an OR gate.
+      If that doesn't make sense, don't worry. I made a diagram to help you visualize.
+    </p>
+    <img src="../Images/de Morgan's Law.png" alt="De Morgan's Laws Image" height="400px">
+    <p>
+      This should help you maybe simplify or better understand different circuits.
+    </p>
+    <h3>What gate belongs to this truth table?</h3>
+    <img src="../Images/Question 4.png" alt="Two not gates connected to the inputs of an and gate" height="100px;">
+    <br>
+    <input type="radio" name="question4" id="norGate" value="NorGate">
+    <label for="norGate">Nor Gate</label>
+    <br><br>
+    <input type="radio" name="question4" id="nandGate" value="NandGate">
+    <label for="nandGate">Nand Gate</label>
+    <br><br>
+    <input type="radio" name="question4" id="xnorGate" value="XnorGate">
+    <label for="xnorGate">Xnor Gate</label>
+    <br><br>
+    <button onclick="checkIfCorrect()">Submit</button>
+    <div id="solution"></div>
+    <button onclick="window.location.href = 'ComplicatedGates.html';">Back</button>
+    <script src="DeMorgansLawsScript.js"></script>
+  </body>
+</html>

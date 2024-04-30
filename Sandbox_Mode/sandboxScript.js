@@ -18,6 +18,7 @@ var nextId = 0;
 
 if (localStorage.selectedCircuit) {
     circuitName.innerText = localStorage.selectedCircuit;
+    gateObject = saveFile.circuits[localStorage.selectedCircuit];
     Object.values(saveFile.circuits[localStorage.selectedCircuit]).forEach((gate, index) => {
         if (parseInt(Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]) >= nextId) {
             nextId = parseInt(Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]) + 1;
@@ -25,92 +26,91 @@ if (localStorage.selectedCircuit) {
         switch (gate.type) {
             case "switch":
                 gateContainer.innerHTML += `
-          <div onmousedown="checkDragDown(event)" onmouseup="checkDragUp(event)" class="switch gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
-            OFF
-            <div class="gateInputOutput switchOutput output1 gateOutput"></div>
-          </div>
-        `
+                    <div onmousedown="checkDragDown(event)" onmouseup="checkDragUp(event)" class="switch gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px; background-color: ${gate.outputs[0].value == 1 ? "#04c90b" : "red"}">
+                        ${gate.outputs[0].value == 1 ? "ON" : "OFF"}
+                        <div class="gateInputOutput switchOutput output1 gateOutput"></div>
+                    </div>
+                `
                 break;
             case "light":
                 gateContainer.innerHTML += `
-          <div class="light gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
-            OFF
-            <div class="gateInputOutput lightInput input1 gateInput"></div>
-          </div>
-        `
+                    <div class="light gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;  background-color: ${gate.inputs[0].value == 1 ? "#04c90b" : "red"}">
+                        ${gate.inputs[0].value == 1 ? "ON" : "OFF"}
+                        <div class="gateInputOutput lightInput input1 gateInput"></div>
+                    </div>
+                `
                 break;
             case "and":
                 gateContainer.innerHTML += `
-          <div class="and gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
-            <div class="gateInputOutput andInput1 input1 gateInput"></div>
-            <div class="gateInputOutput andInput2 input2 gateInput"></div>
-            AND
-            <div class="gateInputOutput andOutput1 output1 gateOutput"></div>
-          </div>
-        `;
+                    <div class="and gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
+                        <div class="gateInputOutput andInput1 input1 gateInput"></div>
+                        <div class="gateInputOutput andInput2 input2 gateInput"></div>
+                        AND
+                        <div class="gateInputOutput andOutput1 output1 gateOutput"></div>
+                    </div>
+                `;
                 break;
             case "or":
                 gateContainer.innerHTML += `
-          <div class="and gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${e.clientX - relX}px; top: ${e.clientY - relY - window.innerHeight * 0.2}px;">
-            <div class="gateInputOutput andInput1 input1 gateInput"></div>
-            <div class="gateInputOutput andInput2 input2 gateInput"></div>
-            AND
-            <div class="gateInputOutput andOutput1 output1 gateOutput"></div>
-          </div>
-        `;
+                    <div class="and gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${e.clientX - relX}px; top: ${e.clientY - relY - window.innerHeight * 0.2}px;">
+                        <div class="gateInputOutput andInput1 input1 gateInput"></div>
+                        <div class="gateInputOutput andInput2 input2 gateInput"></div>
+                        AND
+                        <div class="gateInputOutput andOutput1 output1 gateOutput"></div>
+                    </div>
+                `;
                 break;
             case "not":
                 gateContainer.innerHTML += `
-          <div class="not gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
-            <div class="gateInputOutput notInput input1 gateInput"></div>
-            NOT
-            <div class="gateInputOutput notOutput output1 gateOutput"></div>
-          </div>
-        `;
+                    <div class="not gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
+                        <div class="gateInputOutput notInput input1 gateInput"></div>
+                        NOT
+                        <div class="gateInputOutput notOutput output1 gateOutput"></div>
+                    </div>
+                `;
                 break;
             case "xor":
                 gateContainer.innerHTML += `
-          <div class="xor gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
-            <div class="gateInputOutput xorInput1 input1 gateInput"></div>
-            <div class="gateInputOutput xorInput2 input2 gateInput"></div>
-            XOR
-            <div class="gateInputOutput xorOutput1 output1 gateOutput"></div>
-          </div>
-        `;
+                    <div class="xor gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
+                        <div class="gateInputOutput xorInput1 input1 gateInput"></div>
+                        <div class="gateInputOutput xorInput2 input2 gateInput"></div>
+                        XOR
+                        <div class="gateInputOutput xorOutput1 output1 gateOutput"></div>
+                    </div>
+                `;
                 break;
             case "nand":
                 gateContainer.innerHTML += `
-          <div class="nand gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
-            <div class="gateInputOutput nandInput1 input1 gateInput"></div>
-            <div class="gateInputOutput nandInput2 input2 gateInput"></div>
-            NAND
-            <div class="gateInputOutput nandOutput1 output1 gateOutput"></div>
-          </div>
-        `;
+                    <div class="nand gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
+                        <div class="gateInputOutput nandInput1 input1 gateInput"></div>
+                        <div class="gateInputOutput nandInput2 input2 gateInput"></div>
+                        NAND
+                        <div class="gateInputOutput nandOutput1 output1 gateOutput"></div>
+                    </div>
+                `;
                 break;
             case "nor":
                 gateContainer.innerHTML += `
-          <div class="nor gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
-            <div class="gateInputOutput norInput1 input1 gateInput"></div>
-            <div class="gateInputOutput norInput2 input2 gateInput"></div>
-            NOR
-            <div class="gateInputOutput norOutput1 output1 gateOutput"></div>
-          </div>
-        `;
+                    <div class="nor gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
+                        <div class="gateInputOutput norInput1 input1 gateInput"></div>
+                        <div class="gateInputOutput norInput2 input2 gateInput"></div>
+                        NOR
+                        <div class="gateInputOutput norOutput1 output1 gateOutput"></div>
+                    </div>
+                `;
                 break;
             case "xnor":
                 gateContainer.innerHTML += `
-          <div class="xnor gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
-            <div class="gateInputOutput xnorInput1 input1 gateInput"></div>
-            <div class="gateInputOutput xnorInput2 input2 gateInput"></div>
-            XNOR
-            <div class="gateInputOutput xnorOutput1 output1 gateOutput"></div>
-          </div>
-        `;
-                break;
+                    <div class="xnor gate" id="${Object.keys(saveFile.circuits[localStorage.selectedCircuit])[index]}" style="left:${gate.x}px; top: ${gate.y}px;">
+                        <div class="gateInputOutput xnorInput1 input1 gateInput"></div>
+                        <div class="gateInputOutput xnorInput2 input2 gateInput"></div>
+                        XNOR
+                        <div class="gateInputOutput xnorOutput1 output1 gateOutput"></div>
+                    </div>
+                `;
+            break;
         }
     });
-    gateObject = saveFile.circuits[localStorage.selectedCircuit];
 }
 
 function saveCircuit() {

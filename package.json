@@ -1,0 +1,10 @@
+{
+    "name": "circuit_simulator",
+    "version": "1.0",
+    "dependencies": {
+        "vite": "^5.4.11"
+    },
+    "stackblitz": {
+        "startCommand": "npx vite"
+    }
+}

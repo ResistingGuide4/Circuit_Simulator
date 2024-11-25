@@ -15,3 +15,8 @@
 ## Circuit Simulator Beta 1.0
 - Added Tutorial
 - Fixed bug when loading circuit
+
+## Circuit Simulater 1.1
+- Fixed bug when loading OR gate
+- Added Camera Controls
+- Added and Implemented Gate and Node classes to lower file size

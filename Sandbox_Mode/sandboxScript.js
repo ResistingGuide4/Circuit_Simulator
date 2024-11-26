@@ -1,4 +1,4 @@
-try {var canvas = document.getElementById("canvas");
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 //sizing the canvas correctly
@@ -44,7 +44,7 @@ class Node {
 }
 
 class Gate {
-    constructor(type, id = nextId.toString(), x = 0, y = 0, inputValues = [], outputValues = [], outputConnections = [[]]) {
+    constructor(type, id = nextId.toString(), x = 0, y = 0, inputValues = [], outputValues = [], outputConnections = []) {
         this.type = type;
         this.id = id;
         this.x = x;
@@ -83,7 +83,7 @@ class Gate {
                 `;
                 this.inputs.push(new Node(id, type, "input", 0));
                 this.inputs.push(new Node(id, type, "input", 1));
-                this.outputs.push(new Node(id, type, "output", 0, outputConnections));
+                this.outputs.push(new Node(id, type, "output", 0, outputValues[0],  outputConnections));
                 break;
             case "or":
                 gateContainer.innerHTML += `
@@ -96,7 +96,7 @@ class Gate {
                 `;
                 this.inputs.push(new Node(id, type, "input", 0));
                 this.inputs.push(new Node(id, type, "input", 1));
-                this.outputs.push(new Node(id, type, "output", 0, outputConnections));
+                this.outputs.push(new Node(id, type, "output", 0, outputValues[0], outputConnections));
                 break;
             case "not":
                 gateContainer.innerHTML += `
@@ -107,7 +107,7 @@ class Gate {
                     </div>
                 `;
                 this.inputs.push(new Node(id, type, "input", 0));
-                this.outputs.push(new Node(id, type, "output", 0, outputConnections));
+                this.outputs.push(new Node(id, type, "output", 0, outputValues[0], outputConnections));
                 break;
             case "xor":
                 gateContainer.innerHTML += `
@@ -120,7 +120,7 @@ class Gate {
                 `;
                 this.inputs.push(new Node(id, type, "input", 0));
                 this.inputs.push(new Node(id, type, "input", 1));
-                this.outputs.push(new Node(id, type, "output", 0, outputConnections));
+                this.outputs.push(new Node(id, type, "output", 0, outputValues[0], outputConnections));
                 break;
             case "nand":
                 gateContainer.innerHTML += `
@@ -133,7 +133,7 @@ class Gate {
                 `;
                 this.inputs.push(new Node(id, type, "input", 0));
                 this.inputs.push(new Node(id, type, "input", 1));
-                this.outputs.push(new Node(id, type, "output", 0, outputConnections));
+                this.outputs.push(new Node(id, type, "output", 0, outputValues[0], outputConnections));
                 break;
             case "nor":
                 gateContainer.innerHTML += `
@@ -146,7 +146,7 @@ class Gate {
                 `;
                 this.inputs.push(new Node(id, type, "input", 0));
                 this.inputs.push(new Node(id, type, "input", 1));
-                this.outputs.push(new Node(id, type, "output", 0, outputConnections));
+                this.outputs.push(new Node(id, type, "output", 0, outputValues[0], outputConnections));
                 break;
             case "xnor":
                 gateContainer.innerHTML += `
@@ -159,7 +159,7 @@ class Gate {
                 `;
                 this.inputs.push(new Node(id, type, "input", 0));
                 this.inputs.push(new Node(id, type, "input", 1));
-                this.outputs.push(new Node(id, type, "output", 0, outputConnections));
+                this.outputs.push(new Node(id, type, "output", 0, outputValues[0], outputConnections));
                 break;
         }
     }
@@ -574,6 +574,7 @@ document.addEventListener("mousedown", (e) => {
     mouse.startY = mouse.y;
 });
 document.addEventListener("mouseup", (e) => {
+    
     mouse.isMouseDown = false;
     //checks if drawn line connected two nodes
     var madeConnection = false;
@@ -585,6 +586,7 @@ document.addEventListener("mouseup", (e) => {
                 gate.offsetLeft + node.offsetLeft + node.offsetWidth >= mouse.x &&
                 gate.offsetTop + node.offsetTop + node.offsetHeight >= mouse.y
             ) {
+                
                 noDrag = true;
                 //edits end node so it can make connections
                 if (gate.classList.contains("and") || gate.classList.contains("or") || gate.classList.contains("xor") || gate.classList.contains("nand") || gate.classList.contains("xnor") || gate.classList.contains("nor")) {
@@ -609,7 +611,8 @@ document.addEventListener("mouseup", (e) => {
     });
     if (mouse.startNode[2] == "gateOutput" && mouse.endNode[2] == "gateInput") {
         gateObject[mouse.startNode[0]].outputs[mouse.startNode[1] - 1].connections.push([mouse.endNode[0], mouse.endNode[1]]);
-        gateObject[mouse.startNode[0]].outputs[mouse.startNode[1] - 1].connections.forEach((value) => {
+        gateObject[mouse.startNode[0]].outputs[mouse.startNode[1] - 1].connections.forEach((value, index) => {
+            circuitName.innerText = value;
             gateObject[value[0]].inputs[value[1] - 1].value = gateObject[mouse.startNode[0]].outputs[mouse.startNode[1] - 1].value;
             updateGate(value[0]);
         });
@@ -655,7 +658,7 @@ function drawCanvas() {
         ctx.stroke();
     }
     var gates = Object.values(gateObject);
-
+    document.title = gateObject["0"].outputs[0].connections.length;
     gates.forEach((gate) => {
         gate.outputs.forEach((node) => {
             node.connections.forEach((connection) => {
@@ -674,6 +677,4 @@ function drawCanvas() {
             });
         });
     });
-}} catch (error) {
-    circuitName.innerText = error;
 }

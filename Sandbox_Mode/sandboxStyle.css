@@ -5,9 +5,9 @@ body {
     height: 100%;
     margin: 0;
     background-color: #0b1147;
-    font-family: "Anta", sans-serif;
+    overflow: hidden;
     color: white;
-    overflow-x: hidden;
+    font-family: "Anta", sans-serif;
 }
 
 canvas {
@@ -23,20 +23,19 @@ canvas {
     color: white;
     font-size: 20px;
     border-radius: 30px;
-    border: 2px solid black;
     background-color: red;
     user-select: none;
     position: absolute;
 }
 
 .switchOutput {
-    top: 23px;
-    left: 53px;
+    top: 20px;
+    left: 50px;
 }
 
 .lightInput {
-    left: -7px;
-    top: 23px;
+    left: -10px;
+    top: 20px;
 
 }
 
@@ -65,12 +64,12 @@ canvas {
 }
 
 .pAnd, .pXor, .pNor {
-    height: 33px;
-    width:  53px;
+    height: 37px;
+    width:  45px;
     text-align: center;
-    line-height: 33px;
+    line-height: 37px;
     color: white;
-    font-size: 13px;
+    font-size: 15px;
     border-radius: 6px;
     border: 1px solid black;
     background-color: grey;
@@ -79,12 +78,12 @@ canvas {
 }
 
 .pNand, .pXnor {
-    height: 33px;
+    height: 38px;
     width:  60px;
     text-align: center;
-    line-height: 33px;
+    line-height: 38px;
     color: white;
-    font-size: 13px;
+    font-size: 15px;
     border-radius: 6px;
     border: 1px solid black;
     background-color: grey;
@@ -93,10 +92,10 @@ canvas {
 }
 
 .pOr {
-    height: 33px;
-    width:  47px;
+    height: 38px;
+    width:  45px;
     text-align: center;
-    line-height: 33px;
+    line-height: 38px;
     color: white;
     font-size: 13px;
     border-radius: 6px;
@@ -107,15 +106,15 @@ canvas {
 }
 
 .pOrOutput1 {
-    left: 42px;
-    top: 12px;
+    left: 40px;
+    top: 11px;
 }
 
 .pNot {
-    height: 27px;
-    width: 40px;
+    height: 30px;
+    width: 45px;
     text-align: center;
-    line-height: 27px;
+    line-height: 30px;
     color: white;
     font-size: 13px;
     border-radius: 6px;
@@ -126,147 +125,127 @@ canvas {
 }
 
 .pNotInput {
-    left: -5px;
+    left: -6px;
     top: 9px;
 }
 
 .pNotOutput {
-    left: 35px;
+    left: 39px;
     top: 9px;
 }
 
 .pNandOutput1, .pXnorOutput1 {
     left: 55px;
-    top: 12px;
+    top: 13px;
 }
 
 .pAndInput1, .pOrInput1, .pXorInput1, .pNandInput1, .pXnorInput1, .pNorInput1 {
-    left: -5px;
-    top: 5px;
+    left: -7px;
+    top: 0px;
 }
 
 .pAndInput2, .pOrInput2, .pXorInput2, .pNandInput2, .pXnorInput2, .pNorInput2 {
-    left: -5px;
-    top: 19px;
+    left: -7px;
+    top: 22px;
 }
 
 .pAndOutput1, .pXorOutput1, .pNorOutput1 {
-    left: 49px;
-    top: 12px;
+    left: 38px;
+    top: 10px;
 }
 
 .pInputOutput {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
     background-color: #ccc;
     position: absolute;
 }
 
 .not {
-    height: 40px;
+    height: 60px;
     width: 60px;
     text-align: center;
-    line-height: 40px;
+    line-height: 60px;
     color: white;
     font-size: 20px;
     border-radius: 10px;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     background-color: grey;
     user-select: none;
     position: absolute;
 }
 
 .notInput {
-    left: -7px;
-    top: 13px;
+    left: -10px;
+    top: 20px;
 }
 
 .notOutput {
-    left: 52px;
-    top: 13px;
-}
-
-.or {
-    height: 50px;
-    width:  70px;
-    text-align: center;
-    line-height: 50px;
-    color: white;
-    font-size: 20px;
-    border-radius: 10px;
-    border: 2px solid black;
-    background-color: grey;
-    position: absolute;
-    user-select: none;
-}
-
-.orOutput1 {
-    left: 63px;
-    top: 18px;
+    left: 50px;
+    top: 20px;
 }
 
 .gateInputOutput {
-    width: 15px;
-    height: 15px;
-    border-radius: 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
     background-color: #ccc;
     position: absolute;
 }
 .gateInputOutput:hover {
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 13px;
     transform: translate(-3px, -3px);
     transition: all 0.3s;
 }
 
 .nand, .xnor {
-    height: 50px;
-    width:  90px;
+    height: 60px;
+    width:  80px;
     text-align: center;
-    line-height: 50px;
+    line-height: 60px;
     color: white;
     font-size: 20px;
     border-radius: 10px;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     background-color: grey;
     position: absolute;
     user-select: none;
 }
 
-.and, .xor, .nor {
-    height: 50px;
-    width:  80px;
+.and, .xor, .nor, .or {
+    height: 60px;
+    width:  60px;
     text-align: center;
-    line-height: 50px;
+    line-height: 60px;
     color: white;
     font-size: 20px;
     border-radius: 10px;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     background-color: grey;
     position: absolute;
     user-select: none;
 }
 
 .nandOutput1, .xnorOutput1 {
-    left: 83px;
-    top: 18px;
+    left: 70px;
+    top: 20px;
 }
 
 .andInput1, .orInput1, .xorInput1, .nandInput1, .xnorInput1, .norInput1 {
-    left: -7px;
-    top: 7px;
+    left: -10px;
 }
 
 .andInput2, .orInput2, .xorInput2, .nandInput2, .xnorInput2, .norInput2 {
-    left: -7px;
-    top: 28px;
+    left: -10px;
+    top: 40px;
 }
 
-.andOutput1, .xorOutput1, .norOutput1 {
-    left: 73px;
-    top: 18px;
+.andOutput1, .xorOutput1, .norOutput1, .orOutput1 {
+    left: 50px;
+    top: 20px;
 }
 
 #stage {
